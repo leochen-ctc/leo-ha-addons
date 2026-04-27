@@ -10,6 +10,9 @@ arch:
   - armv7
   - i386
 init: false
+hassio_api: true
+hassio_role: admin
+homeassistant_api: true
 ingress: true
 ingress_port: 8266
 panel_icon: "mdi:account-tie"
