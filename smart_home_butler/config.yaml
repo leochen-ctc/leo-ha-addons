@@ -2,7 +2,7 @@ name: "Smart Home Butler"
 version: "v2.8.1"
 slug: "smart_home_butler"
 description: "AI-powered proactive smart home manager"
-image: "ghcr.io/leochen-ctc/smart-home-butler:{version}"
+image: "ghcr.io/leochen-ctc/smart-home-butler"
 arch:
   - aarch64
   - amd64
