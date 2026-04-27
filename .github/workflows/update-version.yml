@@ -1,0 +1,50 @@
+name: Update Add-on Version
+
+on:
+  repository_dispatch:
+    types: [update_version]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to update to (e.g. 1.2.3)'
+        required: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get version
+        id: get_version
+        run: |
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "version=${{ github.event.client_payload.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update config.yaml
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          if [ -z "$VERSION" ]; then
+            echo "Error: Version not provided"
+            exit 1
+          fi
+          echo "Updating to version $VERSION"
+          sed -i "s/^version: \".*\"/version: \"$VERSION\"/" smart-home-butler/config.yaml
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add smart-home-butler/config.yaml
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update smart-home-butler to version ${{ steps.get_version.outputs.version }}"
+            git push
+          fi
