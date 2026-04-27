@@ -35,13 +35,13 @@ jobs:
             exit 1
           fi
           echo "Updating to version $VERSION"
-          sed -i "s/^version: \".*\"/version: \"$VERSION\"/" smart-home-butler/config.yaml
+          sed -i "s/^version: \".*\"/version: \"$VERSION\"/" smart_home_butler/config.yaml
 
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add smart-home-butler/config.yaml
+          git add smart_home_butler/config.yaml
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
