@@ -1,5 +1,5 @@
 name: "Smart Home Butler"
-version: "3.5.11"
+version: "3.5.11.1"
 slug: "smart_home_butler"
 description: "AI-powered proactive smart home manager"
 arch:
