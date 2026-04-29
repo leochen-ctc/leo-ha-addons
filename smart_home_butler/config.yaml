@@ -2,7 +2,6 @@ name: "Smart Home Butler"
 version: "3.5.11"
 slug: "smart_home_butler"
 description: "AI-powered proactive smart home manager"
-image: "ghcr.io/leochen-ctc/smart-home-butler"
 arch:
   - aarch64
   - amd64
@@ -15,6 +14,8 @@ hassio_role: admin
 homeassistant_api: true
 ingress: true
 ingress_port: 8266
+ports:
+  8266/tcp: 8266
 panel_icon: "mdi:account-tie"
 panel_title: "智慧管家"
 map:
