@@ -1,5 +1,5 @@
 name: "Smart Home Butler"
-version: "3.5.12"
+version: "3.5.14"
 slug: "smart_home_butler"
 description: "AI-powered proactive smart home manager"
 image: "ghcr.io/leochen-ctc/smart-home-butler"
