@@ -11,16 +11,14 @@ arch:
   - i386
 init: false
 hassio_api: true
-hassio_role: admin
+hassio_role: default
 homeassistant_api: true
 ingress: true
 ingress_port: 8266
-ports:
-  8266/tcp: 8266
 panel_icon: "mdi:account-tie"
 panel_title: "智慧管家"
 map:
-  - config:rw
+  - config:ro
   - addon_config:rw
 options:
   gemini_api_key: ""
